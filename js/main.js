@@ -123,7 +123,9 @@ window.addEventListener("DOMContentLoaded", function()
 		
 		if(localStorage.length === 0)
 		{
-			alert("No Data in local Storage");
+			alert("No Data in local Storage. Test Data was Added.");
+			//populate with test data
+			autoFillData();
 		}
 		//Write Data from Local Storage to the Browswer.
 		var makeDiv = document.createElement("div");
@@ -161,6 +163,19 @@ window.addEventListener("DOMContentLoaded", function()
 		}
 	}
 	
+	//Auto Populate local storage
+	function autoFillData()
+	{
+		//actual JSON Object data is coming from json.js file.
+		//json.js file is loaded from additem.html
+		//Store JSON Object into local storage
+		for(var n in json)
+		{
+			var id = Math.floor(Math.random()*10000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+	}
+	
 	//Make Item Links
 	//Create Edit and Delete links for each stored item when displayed
 	function makeItemLinks(key, linksLi)
@@ -188,6 +203,7 @@ window.addEventListener("DOMContentLoaded", function()
 		linksLi.appendChild(deleteLink);
 	}
 	
+	//Edit single item
 	function editItem()
 	{
 		//Grab data from Item from local storage.
