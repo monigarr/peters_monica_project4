@@ -86,7 +86,7 @@ window.addEventListener("DOMContentLoaded", function()
 			//can only store strings. arrays will be converted to strings
 			//localStorage.setItem("test", "hello");
 			//alert(localStorage.key(0));
-			var id 				= Math.floor(Math.random()*10000001);
+			var id = Math.floor(Math.random()*10000001);
 		}
 		else
 		{
@@ -102,18 +102,30 @@ window.addEventListener("DOMContentLoaded", function()
 		//Gather up all our form field values and store in object.
 		//Object properties contain array with form label and input value
 		var item 			= {};
-			item.mtype 		= ["Media Type:", $("mtype").value],
-			item.mname 		= ["Media Name:", $("mname").value];
-			item.mdate  	= ["Date:", $("mdate").value];
-			item.mrating 	= ["Rating:", $("mrating").value];
+			item.mtype 		= ["Media Type:",$("mtype").value];
+			item.mname 		= ["Media Name:",$("mname").value];
+			item.mdate  	= ["Date:",$("mdate").value];
+			item.mrating 	= ["Rating:",$("mrating").value];
 			//radio button
-			item.mtopics 	= ["Topics:", mtopicsValue];
-			item.mtags		= ["Tags:", $("mtags").value];
-			item.mcomments	= ["Comments:", $("mcomments").value];
+			item.mtopics 	= ["Topics:",mtopicsValue];
+			item.mtags		= ["Tags:",$("mtags").value];
+			item.mcomments	= ["Comments:",$("mcomments").value];
 		//Save Data to Local Storage: Use Stringify to convert our object to a string
 		//json.org
 		localStorage.setItem(id, JSON.stringify(item));
 		alert("Media Saved");
+	}
+	//Auto Populate local storage
+	function autoFillData()
+	{
+		//actual JSON Object data is coming from json.js file.
+		//json.js file is loaded from additem.html
+		//Store JSON Object into local storage
+		for(var n in json)
+		{
+			var id = Math.floor(Math.random()*10000001);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
 	}
 	
 	function getData()
@@ -127,6 +139,7 @@ window.addEventListener("DOMContentLoaded", function()
 			//populate with test data
 			autoFillData();
 		}
+		
 		//Write Data from Local Storage to the Browswer.
 		var makeDiv = document.createElement("div");
 		makeDiv.setAttribute("id","items");
@@ -148,6 +161,9 @@ window.addEventListener("DOMContentLoaded", function()
 			var makeSubListSeparator = document.createElement("hr");
 			makeli.appendChild(makeSubList);
 			makeli.appendChild(makeSubListSeparator);
+			//Add Image for each Media Type
+			getImage(obj.mtype[1], makeSubList);
+			
 			for(var n in obj)
 			{
 				var makeSubli = document.createElement("li");
@@ -163,17 +179,15 @@ window.addEventListener("DOMContentLoaded", function()
 		}
 	}
 	
-	//Auto Populate local storage
-	function autoFillData()
+	
+	//Get image for the relevant media type displayed
+	function getImage(mediaType, makeSubList)
 	{
-		//actual JSON Object data is coming from json.js file.
-		//json.js file is loaded from additem.html
-		//Store JSON Object into local storage
-		for(var n in json)
-		{
-			var id = Math.floor(Math.random()*10000001);
-			localStorage.setItem(id, JSON.stringify(json[n]));
-		}
+		var imageLi = document.createElement("li");
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement("img");
+		var setSrc = newImg.setAttribute("src", "images/" + mediaType + ".jpg");
+		imageLi.appendChild(newImg);
 	}
 	
 	//Make Item Links
@@ -223,13 +237,13 @@ window.addEventListener("DOMContentLoaded", function()
 		var radios = document.forms[0].mtopics;
 		for(var i=0; i<radios.length; i++)
 		{
-			if(radios(i).value == "School" && item.mtopics(1) == "School")
+			if(radios(i).value === "School" && item.mtopics(1) === "School")
 			{
 				radios(i).setAttribute("checked", "checked");
-			}else if(radios(i).value == "Work" && item.mtopics(1) == "Work")
+			}else if(radios(i).value === "Work" && item.mtopics(1) === "Work")
 			{
 				radios(i).setAttribute("checked", "checked");
-			}else if(radios(i).value == "Personal" && item.mtopics(1) == "Personal")
+			}else if(radios(i).value === "Personal" && item.mtopics(1) === "Personal")
 			{
 				radios(i).setAttribute("checked", "checked");
 			}
@@ -279,9 +293,11 @@ window.addEventListener("DOMContentLoaded", function()
 		else
 		{
 			localStorage.clear();
-			alert("All Media Deleted");
-			window.location.reload();
-			return false;
+			alert("All Media Deleted and Test Data added to Local Storage.");
+			//window.location.reload();
+			//return false;
+			//populate with test data
+			autoFillData();
 		}
 	}
 	
@@ -323,17 +339,6 @@ window.addEventListener("DOMContentLoaded", function()
 			messageAry.push(mdateError);
 		}
 		
-		/*
-		// Email Validation
-		var re = /*\w+[|.*]?\w+]*@\w+(|\-|?\w+]*{\.\w{w(2:3))*$/;
-		if(re.exec(getEmail.value)))
-		{
-			var emailError = "Enter email";
-			getEmail.style.border = "1px solid red";
-			messageAry.push(emailError);
-		}
-		*/
-		
 		//if errors, show them on screen
 		if(messageAry.length >= 1)
 		{
@@ -354,6 +359,7 @@ window.addEventListener("DOMContentLoaded", function()
 			saveMedia(this.key);
 		}
 	}
+	
 	
 	// Variable defaults
 	// store values of dropdown in array

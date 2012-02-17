@@ -8,7 +8,7 @@ var json =
 			//object properties and value
 			"mtype": ["Type:", "pdf"],
 			"mname": ["Name:", "Test Pdf"],
-			"mdate": ["Date:", "12/12/2012"],
+			"mdate": ["Date:", "2012-02-16"],
 			"mrating": ["Rating:", "8"],
 			"mtopics": ["Topics:", "work"],
 			"mtags": ["Tags:", "worktag"],
@@ -19,7 +19,7 @@ var json =
 			//object properties and value
 			"mtype": ["Type:", "book"],
 			"mname": ["Name:", "Test Book"],
-			"mdate": ["Date:", "12/12/2010"],
+			"mdate": ["Date:", "2009-05-20"],
 			"mrating": ["Rating:", "3"],
 			"mtopics": ["Topics:", "personaltag"],
 			"mtags": ["Tags:", "gardening"],
@@ -30,7 +30,7 @@ var json =
 			//object properties and value
 			"mtype": ["Type:", "audio"],
 			"mname": ["Name:", "Test Audio"],
-			"mdate": ["Date:", "12/12/2009"],
+			"mdate": ["Date:", "11970-04-01"],
 			"mrating": ["Rating:", "8"],
 			"mtopics": ["Topics:", "school"],
 			"mtags": ["Tags:", "schooltag"],
