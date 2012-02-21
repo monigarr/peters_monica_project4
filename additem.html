@@ -6,6 +6,7 @@
     Web App Part 4
     Week 4 Project 4
     Due Thursday Feb. 23rd 2012
+    additem.html
     -->
 <html lang="en">
 	<head>
@@ -35,24 +36,22 @@
 						<li><a href="#" id="displayLink">Show All Media</a></li> 
 						<li><a href="#" id="clear"> Clear Stored Media</a></li>
 					</ul>
-					<ul id="errors"></ul>
 				</nav>
 			</section>
 				<form action="#" method="post" id="mediaForm">
 					<fieldset id="mediaFieldSet">
 						<legend>MEDIA INFO</legend>
 						<span>* fields are required.</span>
-						
 							<ul id="media">
 								<li id="select"><label for="mtype">* Media Type:</label><br /></li>
 								<li id="medianame"><label for="mname">* Media Name: </label> <input type="text" id="mname" /></li>
 								<li id="mediadate"><label for="mdate">* Media Date: </label> <input type="date" id="mdate" placeholder="day/month/year" /></li>
-								<li id="mediarating"><label for="mrating">Media Rating: </label>1<input type="range" min="1" max="10" name="rating" id="mrating" />10</li>
+								<li id="mediarating"><label for="mrating">Media Rating: </label><input type="range" min="1" max="10" name="rating" value="5" id="mrating"><output onclick="value=mrating.value">0</output></li>
 								<li id="mediatopics"><label for="mtopic">Media Topic:</label>  
 									<input type="radio" value="personal" id="personal" name="mtopics" /><label for="personal">Personal</label>
 									<input type="radio" value="school" id="school" name="mtopics" /><label for="school">School</label>
 									<input type="radio" value="work" id="work" name="mtopics" /><label for="work">Work</label>
-									</li>
+								</li>
 								<li id="mediatags"><label for="mtags">Media Tags:</label> <input type="text" id="mtags" /></li>
 								<li id="mediacomments"><label for="mcomments">Media Comments:</label> <textarea id="mcomments" /></textarea></li>
 								<input type="submit" value="Save Media" id="submit" /> <br />

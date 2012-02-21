@@ -5,7 +5,7 @@
 //    Web App Part 4
 //    Week 4 Project 4
 //    Due Thursday Feb. 23rd 2012
-//
+//    main.js
 
 // Wait until DOM is ready
 window.addEventListener("DOMContentLoaded", function()
@@ -88,6 +88,12 @@ window.addEventListener("DOMContentLoaded", function()
 			//alert(localStorage.key(0));
 			var id = Math.floor(Math.random()*10000001);
 		}
+		//Remove Weird Data
+		else if(key === "A-Z" || "a-z")
+		{
+			//delete weird data and move on
+			localStorage.removeItem(this.key);
+		}
 		else
 		{
 			//set the id to existing key we're editing
@@ -96,24 +102,24 @@ window.addEventListener("DOMContentLoaded", function()
 			//to the validate function and then passed here into storeData() function
 			id = key;
 		}
-		// run function to find Selected Radio Button
-		getSelectedRadio();
-		
-		//Gather up all our form field values and store in object.
-		//Object properties contain array with form label and input value
-		var item 			= {};
-			item.mtype 		= ["Media Type:",$("mtype").value];
-			item.mname 		= ["Media Name:",$("mname").value];
-			item.mdate  	= ["Date:",$("mdate").value];
-			item.mrating 	= ["Rating:",$("mrating").value];
-			//radio button
-			item.mtopics 	= ["Topics:",mtopicsValue];
-			item.mtags		= ["Tags:",$("mtags").value];
-			item.mcomments	= ["Comments:",$("mcomments").value];
-		//Save Data to Local Storage: Use Stringify to convert our object to a string
-		//json.org
-		localStorage.setItem(id, JSON.stringify(item));
-		alert("Media Saved");
+			// run function to find Selected Radio Button
+			getSelectedRadio();
+			
+			//Gather up all our form field values and store in object.
+			//Object properties contain array with form label and input value
+			var item 			= {};
+				item.mtype 		= ["Media Type:",$("mtype").value];
+				item.mname 		= ["Media Name:",$("mname").value];
+				item.mdate  	= ["Date:",$("mdate").value];
+				item.mrating 	= ["Rating:",$("mrating").value];
+				//radio button
+				item.mtopics 	= ["Topics:",mtopicsValue];
+				item.mtags		= ["Tags:",$("mtags").value];
+				item.mcomments	= ["Comments:",$("mcomments").value];
+			//Save Data to Local Storage: Use Stringify to convert our object to a string
+			//json.org
+			localStorage.setItem(id, JSON.stringify(item));
+			alert("Media Saved");
 	}
 	//Auto Populate local storage
 	function autoFillData()
@@ -178,7 +184,6 @@ window.addEventListener("DOMContentLoaded", function()
 			makeItemLinks(localStorage.key(i), linksLi);
 		}
 	}
-	
 	
 	//Get image for the relevant media type displayed
 	function getImage(mediaType, makeSubList)

@@ -5,6 +5,7 @@
     Web App Part 4
     Week 4 Project 4
     Due Thursday Feb. 23rd 2012
+    styles.css
 */
 
 
@@ -41,7 +42,7 @@ footer {
 } 
 
 article { 
-
+	display: inline;
 } 
 
 div#items {
@@ -95,11 +96,6 @@ h1 {
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
 } 
 
-h2 { 
-
-
-} 
-
 p { 
 	color: #000000;
 	/*font-style: italic;
@@ -117,10 +113,6 @@ p {
 
 
 /*FORMS*/
-
-form { 
-
-} 
 
 legend { 
 	text-shadow: 2px 2px 1px rgba(0,0,0,0.5);
@@ -161,7 +153,6 @@ input[type=submit] {
 	border-radius: 35%;
 } 
 
-
 /*LISTS*/
 
 #errors { 
@@ -169,10 +160,6 @@ input[type=submit] {
 	background-color: orange;
 	text-decoration: none;
 	display: block;
-} 
-
-#numlist { 
-
 } 
 
 li { 
